@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SlothDo - Welcome</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="auth.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body class="landing-body">
+    <!-- Landing Page -->
+    <div class="landing-container" id="landingPage">
+        <div class="landing-header">
+            <h1><i class="fas fa-sloth"></i> SlothDo</h1>
+            <p>Your personal productivity companion</p>
+        </div>
+        
+        <div class="landing-content">
+            <div class="hero-section">
+                <h2>Welcome to SlothDo</h2>
+                <p>Organize your tasks, track your progress, and achieve your goals with ease.</p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary btn-large" onclick="showLogin()">
+                        <i class="fas fa-sign-in-alt"></i> Login
+                    </button>
+                    <button class="btn btn-secondary btn-large" onclick="showRegister()">
+                        <i class="fas fa-user-plus"></i> Get Started
+                    </button>
+                </div>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <i class="fas fa-tasks"></i>
+                    <h3>Organize Tasks</h3>
+                    <p>Create multiple todo lists and organize your tasks efficiently</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Track Progress</h3>
+                    <p>Monitor your productivity and see your accomplishments</p>
+                </div>
+                <div class="feature-card">
+                    <i class="fas fa-user-cog"></i>
+                    <h3>Personal Profile</h3>
+                    <p>Customize your experience based on your interests and profession</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Login Form -->
+    <div class="auth-container" id="loginContainer" style="display: none;">
+        <div class="auth-card">
+            <div class="auth-header">
+                <h2><i class="fas fa-sign-in-alt"></i> Welcome Back</h2>
+                <p>Login to continue your productivity journey</p>
+            </div>
+            
+            <form id="loginForm" class="auth-form">
+                <div class="form-group">
+                    <label for="loginUsername">
+                        <i class="fas fa-user"></i> Username
+                    </label>
+                    <input type="text" id="loginUsername" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="loginPassword">
+                        <i class="fas fa-lock"></i> Password
+                    </label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-full">
+                    <i class="fas fa-sign-in-alt"></i> Login
+                </button>
+            </form>
+            
+            <div class="auth-footer">
+                <p>Don't have an account? 
+                    <a href="#" onclick="showRegister()">Sign up here</a>
+                </p>
+                <a href="#" onclick="showLanding()">← Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Registration Form -->
+    <div class="auth-container" id="registerContainer" style="display: none;">
+        <div class="auth-card large">
+            <div class="auth-header">
+                <h2><i class="fas fa-user-plus"></i> Join SlothDo</h2>
+                <p>Create your account and set up your profile</p>
+            </div>
+            
+            <form id="registerForm" class="auth-form">
+                <!-- Basic Info -->
+                <div class="form-section">
+                    <h3><i class="fas fa-user"></i> Basic Information</h3>
+                    
+                    <div class="form-group">
+                        <label for="registerUsername">Username</label>
+                        <input type="text" id="registerUsername" required minlength="3" maxlength="30">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="registerPassword">Password</label>
+                        <input type="password" id="registerPassword" required minlength="6">
+                        <small>Minimum 6 characters</small>
+                    </div>
+                    
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="registerAge">Age</label>
+                            <input type="number" id="registerAge" required min="13" max="120">
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="registerProfession">Status</label>
+                            <select id="registerProfession" required>
+                                <option value="">Select your status</option>
+                                <option value="student">Student</option>
+                                <option value="working_professional">Working Professional</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Interests -->
+                <div class="form-section">
+                    <h3><i class="fas fa-heart"></i> Your Interests</h3>
+                    <p>Select the areas you're interested in (optional)</p>
+                    
+                    <div class="interests-grid">
+                        <label class="interest-item">
+                            <input type="checkbox" name="interests" value="art">
+                            <span><i class="fas fa-palette"></i> Art</span>
+                        </label>
+                        <label class="interest-item">
+                            <input type="checkbox" name="interests" value="painting">
+                            <span><i class="fas fa-paint-brush"></i> Painting</span>
+                        </label>
+                        <label class="interest-item">
+                            <input type="checkbox" name="interests" value="web_development">
+                            <span><i class="fas fa-code"></i> Web Development</span>
+                        </label>
+                        <label class="interest-item">
+                            <input type="checkbox" name="interests" value="app_development">
+                            <span><i class="fas fa-mobile-alt"></i> App Development</span>
+                        </label>
+                        <label class="interest-item">
+                            <input type="checkbox" name="interests" value="music">
+                            <span><i class="fas fa-music"></i> Music</span>
+                        </label>
+                        <label class="interest-item">
+                            <input type="checkbox" name="interests" value="photography">
+                            <span><i class="fas fa-camera"></i> Photography</span>
+                        </label>
+                        <label class="interest-item">
+                            <input type="checkbox" name="interests" value="writing">
+                            <span><i class="fas fa-pen"></i> Writing</span>
+                        </label>
+                        <label class="interest-item">
+                            <input type="checkbox" name="interests" value="reading">
+                            <span><i class="fas fa-book"></i> Reading</span>
+                        </label>
+                        <label class="interest-item">
+                            <input type="checkbox" name="interests" value="gaming">
+                            <span><i class="fas fa-gamepad"></i> Gaming</span>
+                        </label>
+                        <label class="interest-item">
+                            <input type="checkbox" name="interests" value="sports">
+                            <span><i class="fas fa-football-ball"></i> Sports</span>
+                        </label>
+                        <label class="interest-item">
+                            <input type="checkbox" name="interests" value="cooking">
+                            <span><i class="fas fa-utensils"></i> Cooking</span>
+                        </label>
+                        <label class="interest-item">
+                            <input type="checkbox" name="interests" value="travel">
+                            <span><i class="fas fa-plane"></i> Travel</span>
+                        </label>
+                        <label class="interest-item">
+                            <input type="checkbox" name="interests" value="fitness">
+                            <span><i class="fas fa-dumbbell"></i> Fitness</span>
+                        </label>
+                        <label class="interest-item">
+                            <input type="checkbox" name="interests" value="dancing">
+                            <span><i class="fas fa-music"></i> Dancing</span>
+                        </label>
+                        <label class="interest-item">
+                            <input type="checkbox" name="interests" value="singing">
+                            <span><i class="fas fa-microphone"></i> Singing</span>
+                        </label>
+                        <label class="interest-item">
+                            <input type="checkbox" name="interests" value="coding">
+                            <span><i class="fas fa-laptop-code"></i> Coding</span>
+                        </label>
+                        <label class="interest-item">
+                            <input type="checkbox" name="interests" value="design">
+                            <span><i class="fas fa-drafting-compass"></i> Design</span>
+                        </label>
+                        <label class="interest-item">
+                            <input type="checkbox" name="interests" value="entrepreneurship">
+                            <span><i class="fas fa-lightbulb"></i> Entrepreneurship</span>
+                        </label>
+                        <label class="interest-item">
+                            <input type="checkbox" name="interests" value="marketing">
+                            <span><i class="fas fa-chart-line"></i> Marketing</span>
+                        </label>
+                        <label class="interest-item">
+                            <input type="checkbox" name="interests" value="data_science">
+                            <span><i class="fas fa-chart-bar"></i> Data Science</span>
+                        </label>
+                        <label class="interest-item">
+                            <input type="checkbox" name="interests" value="ai_ml">
+                            <span><i class="fas fa-robot"></i> AI/ML</span>
+                        </label>
+                        <label class="interest-item">
+                            <input type="checkbox" name="interests" value="blockchain">
+                            <span><i class="fas fa-link"></i> Blockchain</span>
+                        </label>
+                        <label class="interest-item">
+                            <input type="checkbox" name="interests" value="cybersecurity">
+                            <span><i class="fas fa-shield-alt"></i> Cybersecurity</span>
+                        </label>
+                        <label class="interest-item">
+                            <input type="checkbox" name="interests" value="mobile_dev">
+                            <span><i class="fas fa-mobile"></i> Mobile Dev</span>
+                        </label>
+                        <label class="interest-item">
+                            <input type="checkbox" name="interests" value="backend_dev">
+                            <span><i class="fas fa-server"></i> Backend Dev</span>
+                        </label>
+                        <label class="interest-item">
+                            <input type="checkbox" name="interests" value="frontend_dev">
+                            <span><i class="fas fa-desktop"></i> Frontend Dev</span>
+                        </label>
+                    </div>
+                </div>
+                
+                <button type="submit" class="btn btn-primary btn-full">
+                    <i class="fas fa-user-plus"></i> Create Account
+                </button>
+            </form>
+            
+            <div class="auth-footer">
+                <p>Already have an account? 
+                    <a href="#" onclick="showLogin()">Login here</a>
+                </p>
+                <a href="#" onclick="showLanding()">← Back to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <script src="auth.js"></script>
+</body>
+</html> 
