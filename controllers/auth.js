@@ -1,7 +1,7 @@
 const User = require('../models/User');
 const jwt = require('jsonwebtoken');
 
-const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-in-production';
+const JWT_SECRET = process.env.JWT_SECRET || 'pata-nahi-ye-kya-h';
 const JWT_EXPIRES_IN = '24h';
 
 // Generate JWT Token
@@ -16,13 +16,11 @@ exports.register = async (req, res) => {
     
     console.log('Registration attempt:', { username, age, profession, interests: interests?.length });
     
-    // Check if user already exists
     const existingUser = await User.findOne({ username: username.toLowerCase() });
     if (existingUser) {
       return res.status(400).json({ message: 'Username already exists' });
     }
     
-    // Validate required fields
     if (!username || !password || !age || !profession) {
       return res.status(400).json({ 
         message: 'Username, password, age, and profession are required' 
@@ -33,7 +31,6 @@ exports.register = async (req, res) => {
       return res.status(400).json({ message: 'Password must be at least 6 characters' });
     }
     
-    // Create new user
     const user = new User({
       username: username.toLowerCase(),
       password,
@@ -45,10 +42,8 @@ exports.register = async (req, res) => {
     
     await user.save();
     
-    // Generate token
     const token = generateToken(user._id);
     
-    // Return user data (without password)
     const userData = {
       id: user._id,
       username: user.username,
@@ -92,7 +87,6 @@ exports.login = async (req, res) => {
       return res.status(401).json({ message: 'Invalid credentials' });
     }
     
-    // Check password
     const isPasswordValid = await user.comparePassword(password);
     if (!isPasswordValid) {
       return res.status(401).json({ message: 'Invalid credentials' });
@@ -100,11 +94,8 @@ exports.login = async (req, res) => {
     
     // Update last login
     await user.updateLastLogin();
-    
-    // Generate token
     const token = generateToken(user._id);
-    
-    // Return user data (without password)
+
     const userData = {
       id: user._id,
       username: user.username,

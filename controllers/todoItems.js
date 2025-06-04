@@ -1,7 +1,6 @@
 const TodoItem = require('../models/TodoItem');
 const TodoList = require('../models/TodoList');
 
-// Get all items in database
 exports.getAllItems = async (req, res) => {
   try {
     const items = await TodoItem.find()
@@ -14,7 +13,6 @@ exports.getAllItems = async (req, res) => {
   }
 };
 
-// Get one item by unitId
 exports.getOneItem = async (req, res) => {
   try {
     const item = await TodoItem.findOne({ unitId: req.params.unitId })
@@ -31,12 +29,11 @@ exports.getOneItem = async (req, res) => {
   }
 };
 
-// Create new item in a specific list
 exports.createItem = async (req, res) => {
   try {
     console.log('Creating item with data:', req.body);
     
-    // Check if the list exists
+    
     const todoList = await TodoList.findById(req.body.listId);
     if (!todoList) {
       console.log('Todo list not found:', req.body.listId);
@@ -69,7 +66,6 @@ exports.createItem = async (req, res) => {
   }
 };
 
-// Update item content and completion status
 exports.updateItem = async (req, res) => {
   try {
     const updatedItem = await TodoItem.findByIdAndUpdate(
@@ -93,7 +89,6 @@ exports.updateItem = async (req, res) => {
   }
 };
 
-// Update item by unitId
 exports.updateItemByUnitId = async (req, res) => {
   try {
     const updatedItem = await TodoItem.findOneAndUpdate(
@@ -117,7 +112,6 @@ exports.updateItemByUnitId = async (req, res) => {
   }
 };
 
-// Delete item
 exports.deleteItem = async (req, res) => {
   try {
     const deletedItem = await TodoItem.findByIdAndDelete(req.params.id);
@@ -131,7 +125,6 @@ exports.deleteItem = async (req, res) => {
   }
 };
 
-// Delete item by unitId
 exports.deleteItemByUnitId = async (req, res) => {
   try {
     const deletedItem = await TodoItem.findOneAndDelete({ unitId: req.params.unitId });
